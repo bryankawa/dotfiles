@@ -1,7 +1,7 @@
 set nocompatible
 set autoindent
 set expandtab
-set list
+"set list
 set number
 set showmatch
 set smartindent
@@ -17,12 +17,12 @@ set laststatus=2
 set confirm
 set visualbell
 set t_vb=
-set mouse=a
+"set mouse=a
 set cmdheight=2
 set notimeout ttimeout ttimeoutlen=200
 set encoding=utf-8
-set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
-set listchars=tab:»-,trail:-
+"set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
+"set listchars=tab:»-,trail:-
 " 自動再リロード
 set autoread
 "set listchars=tab:»-,trail:-,eol:↲
@@ -33,6 +33,8 @@ set noswapfile
 " 全角スペースを視覚化
 "highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
 "match ZenkakuSpace /　/
+"
+set guifont=DejaVu\ Sans\ Mono\ 15
 
 " スペースもマッピングされるためコメントは横に記述しません。
 " nmap ノーマルモードのキーマップ
@@ -45,6 +47,9 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 nnoremap j gj
 nnoremap k gk
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+set pastetoggle=<F10>
 
 " indentで折りたたみをする
 set foldmethod=indent
@@ -225,10 +230,6 @@ map <silent> [Tag]x ;tabclose<CR>
 " tp 前のタブ
 
 
-"### for US keyboard
-nnoremap : ;
-nnoremap ; :
-
 "### rails用
 let g:surround_{char2nr("-")} = "<% \r %>"
 let g:surround_{char2nr("=")} = "<%= \r %>"
@@ -240,8 +241,11 @@ NeoBundle 'tpope/vim-ragtag'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'slim-template/vim-slim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 filetype plugin indent on
 "filetype on
 syntax on
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+"NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'othree/yajs.vim', {'autoload':{'filetypes':['javascript']}}
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 NeoBundleCheck
